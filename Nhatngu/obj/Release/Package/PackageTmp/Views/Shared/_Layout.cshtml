@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Website Học Tiếng Nhật</title>
+    <link rel="stylesheet" href="/Assets/Components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Assets/Components/font-awesome/css/font-awesome.min.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/Assets/Components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/Assets/dist/css/AdminLTE.min.css" />
+    <link href="/Assets/dist/css/skins/skin-purple.min.css" rel="stylesheet" />
+
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+    <div class="wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>D</b> NET</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Master</b> MT</span>
+            </a>
+            <!-- Header Navbar -->
+            @{Html.RenderAction("CountNotif", "Home");}
+
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        @{Html.RenderAction("MenuLeft", "Home");}
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Main content -->
+            <section class="content container-fluid">
+
+                <div class="row">
+                    @RenderBody()
+                        @RenderSection("body_left", false)
+                    <!-- /.col -->
+                </div>
+                @RenderSection("body_rank", false)
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                Link Facebook: <a href="https://www.facebook.com/IT.dtl">Master</a>
+            </div>
+            <!-- Default to the left -->
+            <strong>&copy; @DateTime.Now.Year <a href="https://www.facebook.com/IT.dtl"> Designed by iTech.Master</a>.</strong>
+
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Create the tabs -->
+            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <!-- Home tab content -->
+                <div class="tab-pane active" id="control-sidebar-home-tab">
+                    <h3 class="control-sidebar-heading">Happy Birthday</h3>
+                    <ul class="control-sidebar-menu">
+                        <li>
+                            <a href="javascript:;">
+                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+                                <div class="menu-info">
+                                    <h4 class="control-sidebar-subheading">Master's Birthday</h4>
+
+                                    <p>Will be on May 1th</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <!-- /.control-sidebar -->
+
+    </div>
+    <!-- AdminLTE App -->
+    <script src="/Assets/Components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="/Assets/Components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/Assets/dist/js/adminlte.min.js"></script>
+</body>
+</html>

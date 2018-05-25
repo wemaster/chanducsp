@@ -1,0 +1,89 @@
+﻿@model Nhatngu.Models.ModelTblTest
+@{
+    ViewBag.Title = "Index - Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="col-md-8">
+        <div id="testview" class="panel panel-primary">
+                <div class="panel-heading">Câu hỏi: @Html.DisplayFor(model=>model.NameTest) </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <div class="checkbox">
+                            <a href="#" class="list-group-item">@Html.CheckBoxFor(model => model.Ischecked1)
+                                <span class="label label-primary">A.</span> @Html.DisplayFor(model =>model.TestA) @Html.HiddenFor(model=>model.TestA)</a>
+                            <a href="#" class="list-group-item">@Html.CheckBoxFor(model => model.Ischecked2)
+                                <span class="label label-success">B.</span> @Html.DisplayFor(model => model.TestB) @Html.HiddenFor(model => model.TestB)</a>
+                            <a href="#" class="list-group-item">@Html.CheckBoxFor(x => Model.Ischecked3)
+                                <span class="label label-warning">C.</span> @Html.DisplayFor(model => model.TestC) @Html.HiddenFor(model => model.TestC)</a>
+                            <a href="#" class="list-group-item">@Html.CheckBoxFor(x => Model.Ischecked4)
+                                <span class="label label-danger">D.</span> @Html.DisplayFor(model => model.TestD) @Html.HiddenFor(model => model.TestD)</a>
+                        </div>
+                        @Html.HiddenFor(model => model.TestTrue)
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("input:checkbox").on('change', function () {
+                            $(" input:checkbox").not(this).prop('checked', false);
+                        });
+                    });
+                    </script>
+                </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">聴解</div>
+            <div class="panel-body"></div>
+        </div>
+        <script>
+        if (sessionStorage.getItem("total_seconds")) {
+            var total_seconds = sessionStorage.getItem("total_seconds");
+        } else {
+            var total_seconds = 1200 * 1;
+
+        }
+        var minutes = parseInt(total_seconds / 60);
+        var seconds = parseInt(total_seconds % 60);
+        function clearCountdown() {
+            sessionStorage.removeItem("total_seconds")
+        }
+        window.onunload = clearCountdown();
+        function countDownTimer() {
+            if (seconds < 10) {
+                seconds = "0" + seconds;
+            } if (minutes < 10) {
+                minutes = "0" + minutes;
+            }
+
+            $("#lblTime").html(minutes + " : " + seconds);
+            if (total_seconds <= 0) {
+                clearCountdown();
+                setTimeout("document.myform.submit()", 1);
+                document.getElementById('<%= btnNext.ClientID %>').click();
+            } else {
+                total_seconds = total_seconds - 1;
+                minutes = parseInt(total_seconds / 60);
+                seconds = parseInt(total_seconds % 60);
+                sessionStorage.setItem("total_seconds", total_seconds)
+                setTimeout("countDownTimer()", 1000);
+            }
+        }
+        setTimeout("countDownTimer()", 1000);
+        </script>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">Kết quả</div>
+            <div class="panel-body">Panel Content</div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">Thời gian</div>
+            <div class="panel-body">
+                <label id="lblTime" style="color:red;font-size:larger;font-weight:200"></label>
+            </div>
+        </div>
+        <input id="btnnext" type="submit" value="Next" class="btn btn-primary" />
+    </div>
+}
+
+

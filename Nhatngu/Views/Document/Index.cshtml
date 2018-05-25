@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section body_left
+{
+    <div class="col-md-4">
+        @{Html.RenderAction("BoxKanji", "Home");}
+        @{Html.RenderAction("BoxChat", "Home");}
+        @{Html.RenderAction("BoxTopView", "Home");}
+    </div>
+}
+<div class="col-md-8">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Tài liệu</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#lop10">Lớp 10</a></li>
+                <li><a data-toggle="pill" href="#lop11">Lớp 11</a></li>
+                <li><a data-toggle="pill" href="#lop12">Lớp 12</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="lop10" class="tab-pane fade in active">
+                    <h3>HOME</h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tên tài liệu</th>
+                                <th>Ngày đăng</th>
+                                <th>Người đăng</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John</td>
+                                <td>20/04/2018</td>
+                                <td>john@example.com</td>
+                                <td><a href="#">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>Mary</td>
+                                <td>20/04/2018</td>
+                                <td>mary@example.com</td>
+                                <td><a href="#">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>July</td>
+                                <td>20/04/2018</td>
+                                <td>july@example.com</td>
+                                <td><a href="#">Download</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="lop11" class="tab-pane fade">
+                    <h3>Menu 1</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div id="lop12" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

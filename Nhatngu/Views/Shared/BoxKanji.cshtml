@@ -1,0 +1,23 @@
+﻿@model  List<Nhatngu.Models.TblKanji>
+<div id="viewkanji" class="box">
+    <div class="box-header with-border">
+        <i class="fa fa-book margin-r-5"></i>
+        <h2 class="box-title"><strong>Hán tự mỗi ngày</strong></h2>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="box-body">
+            <dl>
+                <dt style="text-align:center;font-size:50px">@item.NameKanji</dt>
+                <dt>Âm hán:</dt>
+                <dd> @item.AmHan </dd>
+                <dt>Hiragana: </dt>
+                <dd> @item.Hiragana </dd>
+                <dt>Ý nghĩa: </dt>
+                <dd> @item.YNghia </dd>
+                <dt>Cách nhớ:</dt>
+                <dd> @Html.Raw(@item.CachNho)</dd>
+            </dl>
+        </div>
+    }
+</div>

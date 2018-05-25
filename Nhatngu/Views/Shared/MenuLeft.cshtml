@@ -1,0 +1,77 @@
+﻿@model List<Nhatngu.Models.TblCateParent>
+@{
+    var ViewChildBag= (List<Nhatngu.Models.TblCateChild>)ViewBag.ViewChild;
+}
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/Assets/dist/img/logo.png" alt="User Image" />
+            </div>
+            <div class="pull-left info">
+                <p>Master</p>
+                <a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        <div class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search..." />
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <!-- /.search form -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">Menu Navigation</li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i><span>Menu</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/"><i class="fa fa-circle-o"></i>Trang chủ</a></li>
+                </ul>
+            </li>
+            <!--View Menu category-->
+            @foreach (var item in Model)
+            {
+                var url = "/Cate-Menu/"+@item.NameCate +"-"+ @item.IDCate;
+                <li class=" treeview">
+                    <a href="#">
+                        <i class="@item.Img"></i>
+                        <span>@item.NameCate</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @foreach (var viewitem in ViewChildBag.Where(x => x.IDCate == item.IDCate))
+                        {
+                            <li><a href="@url"><i class="fa fa-circle-o"></i>@viewitem.NameCateChild</a></li>
+                        }
+                    </ul>
+                </li>
+            }
+            <li>
+                <a href="#">
+                    <i class="fa fa-envelope"></i><span>Mailbox</span>
+                    <span class="pull-right-container">
+                        <small class="label pull-right bg-yellow">12</small>
+                        <small class="label pull-right bg-green">16</small>
+                        <small class="label pull-right bg-red">5</small>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

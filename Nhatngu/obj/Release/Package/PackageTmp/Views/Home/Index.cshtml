@@ -1,0 +1,113 @@
+﻿@model List<Nhatngu.Models.TblNew>
+@{
+    ViewBag.Title = "Trang chủ";
+}
+@section body_left
+{
+    <div class="col-md-4">
+    @{Html.RenderAction("BoxKanji", "Home");}
+    @{Html.RenderAction("BoxChat", "Home");}
+    @{Html.RenderAction("BoxTopView", "Home");}
+    </div>
+}
+@section body_rank
+{
+@{Html.RenderAction("RowTopRank", "Home");}
+ <!--Top Rank-->
+@{Html.RenderAction("RowTotalWeb", "Home");}
+<!-- Info Page -->
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        こんにちはー
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>
+    </ol>
+</section>
+
+<div class="col-md-8">
+    <div class="box">
+        <div class="box-header with-border">
+            <h3 class="box-title">Bài viết</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <span style="font-weight:600">Thông báo từ Admin</span> - <a href="#">[ View All ]</a>
+                    <!-- The time line -->
+                    <ul class="timeline">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-red">
+                                @ViewBag.viewdate
+                            </span>
+                        </li>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        @foreach (var item in Model)
+                               {
+                        <li>
+                            <i class="@item.ImgIcon"></i>
+
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i> @Html.DisplayFor(modelItem => item.DayCreate)</span>
+
+                                <h3 class="timeline-header"><a href="#">@item.NameCate</a> @item.NameNews</h3>
+
+                                <div class="timeline-body">
+                                    @item.DetailNews
+                                </div>
+                            </div>
+                        </li>
+                               }
+                        <!-- END timeline item -->
+                        <li>
+                            <i class="fa fa-clock-o bg-gray"></i>
+                        </li>
+                    </ul>
+                    <span style="font-weight:600">Bài viết mới nhất </span> - <a href="#">[ View All ]</a>
+                    <ul class="timeline">
+                        <!-- timeline time label -->
+                        <li class="time-label">
+                            <span class="bg-green">
+                                28/04/2018
+                            </span>
+                        </li>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <li>
+                            <i class="fa fa-camera bg-purple"></i>
+
+                            <div class="timeline-item">
+                                <span class="time"><i class="fa fa-clock-o"></i>2 days ago</span>
+
+                                <h3 class="timeline-header"><a href="#">Master</a> uploaded new photos</h3>
+
+                                <div class="timeline-body">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                </div>
+                            </div>
+                        </li>
+                        <!-- END timeline item -->
+                        <li>
+                            <i class="fa fa-clock-o bg-gray"></i>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.box -->
+</div>
+<!-- /.col -->
