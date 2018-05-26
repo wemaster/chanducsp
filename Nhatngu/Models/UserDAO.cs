@@ -28,5 +28,8 @@ namespace Nhatngu.Models
         {
             return context.TblAccs.SingleOrDefault(x => x.NameAcc == user);
         }
+        #region Add Account
+
+        #endregion
     }
 }
