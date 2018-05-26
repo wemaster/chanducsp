@@ -68,9 +68,7 @@ namespace Nhatngu.hubs
                 CurrentMessage.Remove(item2);
                 var id = Context.ConnectionId;
                 Clients.All.onUserDisconnected(id, item.UserName);
-
             }
-
             return base.OnDisconnected(stopCalled);
         }
         #endregion
