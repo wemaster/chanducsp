@@ -61,10 +61,11 @@ namespace Nhatngu.hubs
         public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
         {
             var item = ConnectedUsers.FirstOrDefault(x => x.ConnectedId == Context.ConnectionId);
+            var item2 = CurrentMessage.SingleOrDefault(); 
             if (item != null)
             {
                 ConnectedUsers.Remove(item);
-
+                CurrentMessage.Remove(item2);
                 var id = Context.ConnectionId;
                 Clients.All.onUserDisconnected(id, item.UserName);
 
